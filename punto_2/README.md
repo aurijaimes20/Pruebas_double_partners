@@ -1,7 +1,16 @@
 # 🎭 Pruebas Automatizadas con Playwright
-## Page Object Model - Estructura Completa
+## Page Object Model - OpenCart Automation
 
-Este proyecto contiene la estructura completa para crear pruebas automatizadas usando Playwright con el patrón Page Object Model (POM) en JavaScript.
+Este proyecto contiene el framework de automatización de pruebas web para **OpenCart** (https://opencart.abstracta.us) usando Playwright con el patrón Page Object Model (POM) en JavaScript.
+
+## 🎯 Objetivo
+
+Automatizar los flujos de prueba más críticos de la tienda OpenCart para reducir el tiempo de ejecución y mejorar la cobertura de pruebas, incluyendo:
+- ✅ **Flujo de registro de usuario** (completado)
+- 🔄 Flujo de login
+- 🔄 Navegación de productos
+- 🔄 Proceso de compra
+- 🔄 Gestión de cuenta
 
 ## 📋 Descripción
 
@@ -15,22 +24,27 @@ Este setup proporciona una base sólida para desarrollar pruebas automatizadas d
 
 ```
 punto_2/
-├── pages/                    # Clases de páginas (Page Objects)
-│   ├── BasePage.js          # Página base con métodos comunes
-│   ├── HomePage.js          # Página principal
-│   └── ProductPage.js       # Página de productos
-├── tests/                   # Casos de prueba
-│   └── example.spec.js      # Ejemplo de pruebas
-├── utils/                   # Utilidades y constantes
-│   ├── helpers.js           # Funciones auxiliares
-│   └── constants.js         # Constantes del proyecto
-├── fixtures/                # Datos de prueba
-│   └── testData.js          # Conjuntos de datos para pruebas
-├── playwright.config.js     # Configuración de Playwright
-├── package.json             # Dependencias y scripts
-├── env.example              # Variables de entorno de ejemplo
-├── .gitignore              # Archivos a ignorar en Git
-└── README.md               # Este archivo
+├── pages/                           # Clases de páginas (Page Objects)
+│   ├── BasePage.js                 # Página base con métodos comunes
+│   ├── HomePage.js                 # Ejemplo genérico de Page Object
+│   ├── ProductPage.js              # Ejemplo genérico de Page Object
+│   ├── OpenCartHomePage.js         # Page Object para la página principal de OpenCart
+│   ├── OpenCartRegisterPage.js     # Page Object para el formulario de registro
+│   └── OpenCartSuccessPage.js      # Page Object para la página de éxito del registro
+├── tests/                          # Casos de prueba automatizadas
+│   ├── example.spec.js             # Ejemplo genérico de pruebas
+│   └── opencart-registration.spec.js # Pruebas del flujo de registro de OpenCart
+├── utils/                          # Utilidades y constantes
+│   ├── helpers.js                  # Funciones auxiliares
+│   └── constants.js                # Constantes del proyecto
+├── fixtures/                       # Datos de prueba específicos para OpenCart
+│   ├── testData.js                 # Datos de prueba genéricos
+│   └── opencartTestData.js         # Datos específicos para OpenCart (usuarios, productos, configuraciones)
+├── playwright.config.js            # Configuración de Playwright para OpenCart
+├── package.json                    # Dependencias y scripts
+├── env.example                     # Variables de entorno de ejemplo
+├── .gitignore                     # Archivos a ignorar en Git
+└── README.md                      # Este archivo
 ```
 
 ## 🚀 Instalación y Configuración
@@ -49,6 +63,7 @@ npm run install:browsers
 ```bash
 cp env.example .env
 # Editar .env con tus configuraciones
+# BASE_URL=https://opencart.abstracta.us
 ```
 
 ## 🎯 Uso
@@ -80,11 +95,14 @@ npm run test:report
 ### Ejecutar Pruebas Específicas
 
 ```bash
+# Ejecutar el flujo de registro de OpenCart
+npx playwright test tests/opencart-registration.spec.js
+
 # Ejecutar un archivo específico
 npx playwright test tests/example.spec.js
 
 # Ejecutar pruebas con un patrón
-npx playwright test --grep "should load home page"
+npx playwright test --grep "Registro exitoso de usuario"
 
 # Ejecutar pruebas en paralelo
 npx playwright test --workers=4
@@ -101,33 +119,50 @@ Clase base que contiene métodos comunes para todas las páginas:
 - Screenshots
 - Interacciones básicas
 
-#### HomePage.js
-Página específica para la página principal:
-- Selectores específicos
-- Métodos de navegación
+#### OpenCartHomePage.js
+Página específica para la página principal de OpenCart:
+- Selectores específicos de OpenCart
+- Métodos de navegación (My Account, categorías)
 - Funcionalidades de búsqueda
-- Verificaciones de contenido
+- Verificaciones de contenido y productos destacados
 
-#### ProductPage.js
-Página específica para productos:
-- Información de productos
-- Funcionalidades de carrito
-- Navegación entre productos
-- Formularios de producto
+#### OpenCartRegisterPage.js
+Página específica para el formulario de registro:
+- Campos del formulario de registro
+- Validaciones de campos
+- Manejo de errores
+- Navegación entre páginas
 
-### Ejemplo de Uso
+#### OpenCartSuccessPage.js
+Página específica para la confirmación de registro:
+- Mensajes de éxito
+- Navegación al panel de cuenta
+- Verificaciones de estado
+- Enlaces del sidebar
+
+### Ejemplo de Uso - Flujo de Registro
 
 ```javascript
 const { test, expect } = require('@playwright/test');
-const HomePage = require('../pages/HomePage');
+const OpenCartHomePage = require('../pages/OpenCartHomePage');
+const OpenCartRegisterPage = require('../pages/OpenCartRegisterPage');
+const { userData } = require('../fixtures/opencartTestData');
 
-test('should load home page', async ({ page }) => {
-  const homePage = new HomePage(page);
-  await homePage.navigateTo('https://example.com');
-  await homePage.verifyPageLoaded();
+test('Registro exitoso de usuario', async ({ page }) => {
+  const homePage = new OpenCartHomePage(page);
+  const registerPage = new OpenCartRegisterPage(page);
   
-  const isLogoVisible = await homePage.isLogoVisible();
-  expect(isLogoVisible).toBe(true);
+  // Navegar a la página principal
+  await homePage.navigate();
+  await homePage.navigateToRegister();
+  
+  // Llenar formulario de registro
+  await registerPage.fillRegistrationForm(userData.validUser);
+  await registerPage.clickContinueButton();
+  
+  // Verificar éxito
+  const currentUrl = page.url();
+  expect(currentUrl).toContain('account/success');
 });
 ```
 
@@ -147,13 +182,14 @@ Constantes para:
 - Selectores comunes
 - Configuraciones
 
-### testData.js
-Datos de prueba organizados por:
-- Usuarios
-- Productos
-- Órdenes
-- Formularios
-- Configuraciones
+### opencartTestData.js
+Datos de prueba específicos para OpenCart:
+- **userData**: Usuarios válidos e inválidos para registro
+- **productData**: Productos destacados y categorías
+- **appConfig**: URLs, títulos y mensajes esperados
+- **navigationData**: Enlaces de menú y footer
+- **validationData**: Patrones y límites de validación
+- **testScenarios**: Escenarios de prueba predefinidos
 
 ## 📊 Configuración de Reportes
 
@@ -177,7 +213,7 @@ El proyecto está configurado para generar:
 
 ### Variables de Entorno
 ```bash
-BASE_URL=https://your-app.com
+BASE_URL=https://opencart.abstracta.us
 HEADLESS=true
 SLOW_MO=0
 ```
@@ -234,11 +270,13 @@ Capturados automáticamente durante las pruebas
 
 ## 📝 Próximos Pasos
 
-1. **Personalizar** las páginas según tu aplicación
-2. **Agregar** más Page Objects según necesidades
-3. **Crear** casos de prueba específicos
-4. **Configurar** CI/CD para ejecución automática
-5. **Integrar** con herramientas de reporte
+1. ✅ **Flujo de registro de usuario** - Completado
+2. 🔄 **Flujo de login** - En desarrollo
+3. 🔄 **Navegación de productos** - Pendiente
+4. 🔄 **Proceso de compra** - Pendiente
+5. 🔄 **Gestión de cuenta** - Pendiente
+6. 🔄 **Configurar CI/CD** para ejecución automática
+7. 🔄 **Integrar** con herramientas de reporte
 
 ## 🤝 Contribución
 
