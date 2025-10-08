@@ -3,6 +3,10 @@
 
 Este proyecto contiene el framework de automatización de pruebas web para **OpenCart** (https://opencart.abstracta.us) usando Playwright con el patrón Page Object Model (POM) en JavaScript.
 
+##video de la ejecucion de las pruebas e2e
+
+![Video](./assets/Grabación%20de%20pantalla%202025-10-08%20a%20la(s)%204.40.54 p.m..mov)
+
 ##Objetivo
 
 Automatizar los flujos de prueba más críticos de la tienda OpenCart para reducir el tiempo de ejecución y mejorar la cobertura de pruebas, incluyendo:
