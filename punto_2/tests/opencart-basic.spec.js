@@ -1,4 +1,5 @@
 const { test, expect } = require('@playwright/test');
+const { generateRandomEmail } = require('../utils/helpers');
 
 /**
  * Prueba básica del flujo de registro de OpenCart
@@ -35,8 +36,7 @@ test.describe('OpenCart - Prueba Básica', () => {
     console.log('📍 Paso 3: Llenando formulario...');
     
     // Generar email único para evitar conflictos
-    const timestamp = Date.now();
-    const uniqueEmail = `test.user.${timestamp}@example.com`;
+    const uniqueEmail = generateRandomEmail();
     
     await page.fill('input[name="firstname"]', 'Juan');
     await page.fill('input[name="lastname"]', 'Pérez');
