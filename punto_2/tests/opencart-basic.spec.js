@@ -41,20 +41,16 @@ test.describe('Registro de usuario', () => {
     
     console.log('Formulario llenado correctamente');
     
-    
     console.log('Paso 4: Enviando formulario...');
     await page.click('input[type="submit"][value="Continue"]');
     
-    
     await page.waitForLoadState('networkidle');
-    
     
     const finalUrl = page.url();
     console.log('URL final:', finalUrl);
     
     if (finalUrl.includes('account/success')) {
       console.log('¡Registro exitoso!');
-      
       
       const successMessage = await page.textContent('body');
       if (successMessage.includes('Congratulations')) {
@@ -65,7 +61,6 @@ test.describe('Registro de usuario', () => {
     } else if (finalUrl.includes('account/register')) {
       console.log('Aún en página de registro - posible error');
       
-      
       const pageContent = await page.textContent('body');
       if (pageContent.includes('Warning') || pageContent.includes('Error')) {
         console.log('Se detectaron mensajes de error en la página');
@@ -73,7 +68,6 @@ test.describe('Registro de usuario', () => {
     } else {
       console.log('URL inesperada:', finalUrl);
     }
-    
     
     expect(finalUrl).toBeDefined();
     console.log('Prueba básica completada');
@@ -84,7 +78,6 @@ test.describe('Registro de usuario', () => {
     
     await page.goto('https://opencart.abstracta.us/');
     await page.waitForLoadState('networkidle');
-    
     
     const logo = await page.$('h1 a');
     expect(logo).toBeTruthy();
