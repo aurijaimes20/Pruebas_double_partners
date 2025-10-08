@@ -5,7 +5,7 @@ Este proyecto contiene el framework de automatización de pruebas web para **Ope
 
 ##video de la ejecucion de las pruebas e2e
 
-![Video](./assets/Grabación%20de%20pantalla%202025-10-08%20a%20la(s)%204.40.54 p.m..mov)
+![Video](./assets/Grabación%20de%20pantalla%20Oct%208%202025.mp4)
 
 ##Objetivo
 
