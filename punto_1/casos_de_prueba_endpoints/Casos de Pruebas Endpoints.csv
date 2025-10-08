@@ -1,0 +1,116 @@
+Caso de prueba ,Estatus,Pre condicion ,Resumen,Paso a paso ,Resultado esperado ,version ,bud id ,observaciones 
+1,Pending,Consulta de productos por categoría (GET /products/category/{category}),Consultar productos por categoría electronics exitosamente	,"Dado que tengo Postman abierto 
+Y que la API FakeStore está disponible 
+Y que tengo la categoría ""electronics"" 
+Cuando creo una nueva petición GET 
+Y configuro la URL como ""https://fakestoreapi.com/products/category/electronics"" 
+Y hago click en ""Send""       ","Entonces debe dar como resultado Código 200, respuesta es array de productos, todos los productos tienen ""category"" igual a ""electronics"", cada producto contiene campos obligatorios, array no está vacío",,,
+2,Pending,Consulta de productos por categoría (GET /products/category/{category}),Consultar productos por categoría inexistente	,"Dado que tengo Postman abierto 
+Y que la API FakeStore está disponible 
+Y que tengo una categoría inexistente ""categoria_inexistente"" 
+Cuando creo una nueva petición GET 
+Y configuro la URL como ""https://fakestoreapi.com/products/category/categoria_inexistente"" 
+Y hago click en ""Send"" ","Entonces debe dar como resultado Código 200, respuesta es array vacío ""[]""",,,
+3,Pending,Consulta de productos por categoría (GET /products/category/{category}),Consultar productos por categoría con caracteres especiales	,"Dado que tengo Postman abierto 
+Y que la API FakeStore está disponible 
+Y que tengo una categoría con caracteres especiales ""electronics@#$"" 
+Cuando creo una nueva petición GET Y configuro la URL como ""https://fakestoreapi.com/products/category/electronics@#$"" 
+Y hago click en ""Send""","Entonces debe dar como resultado Código 200, respuesta es array vacío ""[]""",,,
+,Pending,Consulta de productos por categoría (GET /products/category/{category}),Consultar productos con ruta inválida,"Dado que tengo Postman abierto 
+Y que la API FakeStore está disponible 
+Y que tengo una ruta de endpoint inválida Cuando creo una nueva petición GET 
+Y configuro la URL como ""https://fakestoreapi.com/products/invalid-route"" 
+Y hago click en ""Send"" ","Entonces debe dar como resultado Código 404, respuesta indica que la ruta no fue encontrada",,,
+4,Pending,Consulta de producto específico (GET /products/{id}),Consultar producto específico exitosamente,"Dado que tengo Postman abierto 
+Y que la API FakeStore está disponible 
+Y que tengo un ID de producto válido ""9"" 
+Cuando realizo una petición GET a ""https://fakestoreapi.com/products/9"" 
+Y hago click en ""Send""","Entonces debe dar como resultado Código 200, respuesta contiene campo ""id"" con valor 9, campos obligatorios presentes, price es número positivo, title es cadena no vacía",,,
+5,Pending,Consulta de producto específico (GET /products/{id}),Consultar producto con ID inexistente,"Dado que tengo Postman abierto
+Y que la API FakeStore está disponible 
+Y que tengo un ID de producto inexistente ""99999"" 
+Cuando realizo una petición GET a ""https://fakestoreapi.com/products/99999"" 
+Y hago click en ""Send"" ","Entonces debe dar como resultado Código 404, respuesta indica que el producto no fue encontrado",,,
+6,Pending,Consulta de producto específico (GET /products/{id}),Consultar producto con ID inválido,"Dado que tengo Postman abierto 
+Y que la API FakeStore está disponible 
+Y que tengo un ID de producto inválido ""abc"" 
+Cuando realizo una petición GET a ""https://fakestoreapi.com/products/abc"" 
+Y hago click en ""Send"" ","Entonces debe dar como resultado  Código 400, respuesta indica error de formato",,,
+7,Pending,Creación de producto (POST /products),Crear producto exitosamente	,"Dado que tengo Postman abierto 
+Y que la API FakeStore está disponible 
+Y que tengo los datos válidos para un nuevo producto
+Cuando creo una nueva petición POST Y configuro la URL como ""https://fakestoreapi.com/products"" 
+Y agrego el header ""Content-Type: application/json"" 
+Y selecciono ""Body"" > ""raw"" > ""JSON"" 
+Y ingreso el JSON con los datos del producto 
+Y hago click en ""Send""","Entonces debe dar como resultado Código 201, respuesta contiene campo ""id"" generado automáticamente, todos los campos enviados están presentes, campo ""id"" es número entero positivo",,,
+8,Pending,Creación de producto (POST /products),Crear producto sin campo obligatorio	,"Dado que tengo Postman abierto
+Y que la API FakeStore está disponible 
+Y que tengo datos de producto incompletos sin el campo ""title"" 
+Cuando creo una nueva petición POST
+Y configuro la URL como ""https://fakestoreapi.com/products""
+Y agrego el header ""Content-Type: application/json"" 
+Y selecciono ""Body"" > ""raw"" > ""JSON""
+Y ingreso el JSON sin el campo ""title"" 
+Y hago click en ""Send""","Entonces debe dar como resultado Código 400, respuesta indica que faltan campos obligatorios",,,
+9,Pending,Creación de producto (POST /products),Crear producto con precio inválido	,"Dado que tengo Postman abierto 
+Y que la API FakeStore está disponible 
+Y que tengo datos de producto con precio negativo ""-10.50"" 
+Cuando creo una nueva petición POST 
+Y configuro la URL como ""https://fakestoreapi.com/products"" 
+Y agrego el header ""Content-Type: application/json"" 
+Y selecciono ""Body"" > ""raw"" > ""JSON"" 
+Y ingreso el JSON con precio negativo 
+Y hago click en ""Send""","Entonces debe dar como resultado Código 400, respuesta indica que el precio debe ser positivo",,,
+10,Pending,Creación de producto (POST /products),Crear producto con categoría inválida	,"Dado que tengo Postman abierto 
+Y que la API FakeStore está disponible 
+Y que tengo datos de producto con categoría ""categoria_inexistente"" 
+Cuando creo una nueva petición POST 
+Y configuro la URL como ""https://fakestoreapi.com/products"" 
+Y agrego el header ""Content-Type: application/json"" 
+Y selecciono ""Body"" > ""raw"" > ""JSON"" 
+Y ingreso el JSON con categoría inválida 
+Y hago click en ""Send"" ","Entonces debe dar como resultado Código 400, respuesta indica que la categoría no es válida",,,
+11,Pending,"Actualización de imagen de producto (PUT /products/{id})
+",Actualizar imagen de producto exitosamente        ,"Dado que tengo Postman abierto 
+Y que la API FakeStore está disponible
+ Y que tengo un producto existente con ID ""21"" 
+Y que tengo una nueva URL de imagen ""https://example.com/new-speaker-image.jpg"" 
+Cuando creo una nueva petición PUT 
+Y configuro la URL como ""https://fakestoreapi.com/products/21"" 
+Y agrego el header ""Content-Type: application/json"" 
+Y selecciono ""Body"" > ""raw"" > ""JSON"" 
+Y ingreso el JSON con la nueva imagen 
+Y hago click en ""Send"" ","Entonces debe dar como resultado  Código 200, respuesta contiene campo ""image"" actualizado, campo ""image"" contiene la nueva URL, todos los demás campos se mantienen iguales
+",,,
+12,Pending,"Actualización de imagen de producto (PUT /products/{id})
+",Actualizar imagen de producto inexistente	,"Dado que tengo Postman abierto 
+Y que la API FakeStore está disponible
+Y que tengo un ID de producto inexistente ""99999""
+Y que tengo una nueva URL de imagen válida 
+Cuando creo una nueva petición PUT 
+Y configuro la URL como ""https://fakestoreapi.com/products/99999"" 
+Y agrego el header ""Content-Type: application/json"" 
+Y selecciono ""Body"" > ""raw"" > ""JSON"" 
+Y ingreso el JSON con la nueva imagen
+Y hago click en ""Send""","Entonces debe dar como resultado Código 404, respuesta indica que el producto no fue encontrado
+",,,
+13,Pending,"Actualización de imagen de producto (PUT /products/{id})
+",Actualizar imagen con URL inválida,"Dado que tengo Postman abierto 
+Y que la API FakeStore está disponible 
+Y que tengo un producto existente con ID ""21"" 
+Y que tengo una URL de imagen inválida ""no-es-una-url"" 
+Cuando creo una nueva petición PUT Y configuro la URL como ""https://fakestoreapi.com/products/21"" 
+Y agrego el header ""Content-Type: application/json"" 
+Y selecciono ""Body"" > ""raw"" > ""JSON"" 
+Y ingreso el JSON con URL inválida 
+Y hago click en ""Send""","Entonces debe dar como resultado Código 400, respuesta indica que la URL de imagen no es válida",,,
+14,Pending,"Actualización de imagen de producto (PUT /products/{id})
+",Actualizar imagen sin proporcionar datos	,"Dado que tengo Postman abierto 
+Y que la API FakeStore está disponible 
+Y que tengo un producto existente con ID ""21"" 
+Cuando creo una nueva petición PUT 
+Y configuro la URL como ""https://fakestoreapi.com/products/21"" 
+Y agrego el header ""Content-Type: application/json"" 
+Y dejo el ""Body"" vacío 
+Y hago click en ""Send""","Entonces debe dar como resultado Código 400, respuesta indica que se requieren datos para la actualización",,,
