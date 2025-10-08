@@ -5,7 +5,6 @@ const BASE_URL = __ENV.BASE_URL || 'https://fakestoreapi.com';
 
 export const options = {
   scenarios: {
-    // Escala VUs de 100 → 1000 en pasos de 150 (1 min por escalón)
     ramp_list_products: {
       executor: 'ramping-vus',
       startVUs: 0,
@@ -26,7 +25,7 @@ export const options = {
     ramp_create_product: {
       executor: 'ramping-vus',
       startVUs: 0,
-      startTime: '30s', // empieza 30s después para solaparlas un poco
+      startTime: '30s',
       stages: [
         { duration: '1m', target: 100 },
         { duration: '1m', target: 250 },
@@ -43,7 +42,7 @@ export const options = {
   },
 
   thresholds: {
-    http_req_failed: ['rate<0.02'],              // <2% errores
+    http_req_failed: ['rate<0.02'],          
     'http_req_duration{endpoint:GET /products}': ['p(95)<1200'],
     'http_req_duration{endpoint:POST /products}': ['p(95)<2000'],
   },

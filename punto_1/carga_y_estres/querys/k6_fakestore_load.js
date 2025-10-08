@@ -8,24 +8,24 @@ export const options = {
   scenarios: {
     list_products: {
       executor: 'constant-vus',
-      vus: 75,              // 75 users for GET
+      vus: 75,            
       duration: '2m',
       exec: 'listProducts',
       tags: { endpoint: 'GET /products' },
     },
     create_product: {
       executor: 'constant-vus',
-      vus: 75,              // 75 users for POST
+      vus: 75,             
       duration: '2m',
       exec: 'createProduct',
       tags: { endpoint: 'POST /products' },
-      startTime: '1s',      // small stagger
+      startTime: '1s',     
     },
   },
   thresholds: {
-    http_req_failed: ['rate<0.02'],                                // <2% errors
-    'http_req_duration{endpoint:GET /products}': ['p(95)<800'],    // p95 < 800ms
-    'http_req_duration{endpoint:POST /products}': ['p(95)<1200'],  // p95 < 1200ms
+    http_req_failed: ['rate<0.02'],                               
+    'http_req_duration{endpoint:GET /products}': ['p(95)<800'],   
+    'http_req_duration{endpoint:POST /products}': ['p(95)<1200'], 
   },
   summaryTrendStats: ['avg','min','med','p(90)','p(95)','max'],
 };
