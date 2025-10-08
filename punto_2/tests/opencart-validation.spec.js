@@ -100,7 +100,7 @@ test.describe('OpenCart - Validaciones de Formulario', () => {
     await page.fill('input[name="email"]', 'test@example.com');
     await page.fill('input[name="telephone"]', '1234567890');
     await page.fill('input[name="password"]', 'Password123');
-    await page.fill('input[name="confirm"]', 'DifferentPassword123'); // Contraseña diferente
+    await page.fill('input[name="confirm"]', 'DifferentPassword123');
     await page.check('input[name="newsletter"][value="0"]');
     await page.check('input[name="agree"]');
     
@@ -130,7 +130,7 @@ test.describe('OpenCart - Validaciones de Formulario', () => {
     
     await page.fill('input[name="firstname"]', 'Juan');
     await page.fill('input[name="lastname"]', 'Pérez');
-    await page.fill('input[name="email"]', 'email-invalido-sin-arroba'); // Email inválido
+    await page.fill('input[name="email"]', 'email-invalido-sin-arroba');
     await page.fill('input[name="telephone"]', '1234567890');
     await page.fill('input[name="password"]', 'TestPassword123!');
     await page.fill('input[name="confirm"]', 'TestPassword123!');
