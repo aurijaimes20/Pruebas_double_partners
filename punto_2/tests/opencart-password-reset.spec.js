@@ -18,7 +18,7 @@ test.describe('OpenCart - Pruebas de Restablecimiento de Contraseña Simplificad
   });
 
   test('Navegación a página de restablecimiento de contraseña', async ({ page }) => {
-    console.log('🔑 Probando navegación a restablecimiento de contraseña...');
+    console.log('Probando navegación a restablecimiento de contraseña...');
     
     await homePage.navigateToLogin();
     await loginPage.verifyPageLoaded();
@@ -27,32 +27,31 @@ test.describe('OpenCart - Pruebas de Restablecimiento de Contraseña Simplificad
     await forgottenPasswordPage.verifyPageLoaded();
     
     expect(page.url()).toContain('account/forgotten');
-    console.log('✅ Navegación a restablecimiento de contraseña exitosa');
+    console.log('Navegación a restablecimiento de contraseña exitosa');
   });
 
   test('Verificar elementos de la página de restablecimiento', async ({ page }) => {
-    console.log('🔍 Verificando elementos de restablecimiento...');
+    console.log('Verificando elementos de restablecimiento...');
     
     await homePage.navigateToLogin();
     await loginPage.verifyPageLoaded();
     await page.click('a[href*="account/forgotten"]');
     await forgottenPasswordPage.verifyPageLoaded();
     
-    // Verificar elementos principales
     expect(await page.isVisible('input[name="email"]')).toBe(true);
-    console.log('✅ Campo de email encontrado');
+    console.log('Campo de email encontrado');
     
     expect(await page.isVisible('input[type="submit"][value="Continue"]')).toBe(true);
-    console.log('✅ Botón Continue encontrado');
+    console.log('Botón Continue encontrado');
     
     expect(await page.isVisible('a[href*="account/login"]:has-text("Back")')).toBe(true);
-    console.log('✅ Botón Back encontrado');
+    console.log('Botón Back encontrado');
     
-    console.log('✅ Todos los elementos de restablecimiento verificados');
+    console.log('Todos los elementos de restablecimiento verificados');
   });
 
   test('Restablecimiento con campo vacío - No debe navegar', async ({ page }) => {
-    console.log('🔑 Probando restablecimiento con campo vacío...');
+    console.log('Probando restablecimiento con campo vacío...');
     
     await homePage.navigateToLogin();
     await loginPage.verifyPageLoaded();
@@ -61,18 +60,18 @@ test.describe('OpenCart - Pruebas de Restablecimiento de Contraseña Simplificad
     
     const initialUrl = page.url();
     
-    // No llenar el campo de email
+    
     await page.click('input[type="submit"][value="Continue"]');
     
     await page.waitForTimeout(1000);
     
     const finalUrl = page.url();
     expect(finalUrl).toBe(initialUrl);
-    console.log('✅ Restablecimiento con campo vacío no navegó - Validación funcionando');
+    console.log('Restablecimiento con campo vacío no navegó - Validación funcionando');
   });
 
   test('Restablecimiento con email inválido - No debe navegar', async ({ page }) => {
-    console.log('🔑 Probando restablecimiento con email inválido...');
+    console.log('Probando restablecimiento con email inválido...');
     
     await homePage.navigateToLogin();
     await loginPage.verifyPageLoaded();
@@ -88,7 +87,7 @@ test.describe('OpenCart - Pruebas de Restablecimiento de Contraseña Simplificad
     
     const finalUrl = page.url();
     expect(finalUrl).toBe(initialUrl);
-    console.log('✅ Restablecimiento con email inválido no navegó - Validación funcionando');
+    console.log('Restablecimiento con email inválido no navegó - Validación funcionando');
   });
 
   test('Navegación de vuelta al login desde restablecimiento', async ({ page }) => {
@@ -99,11 +98,10 @@ test.describe('OpenCart - Pruebas de Restablecimiento de Contraseña Simplificad
     await page.click('a[href*="account/forgotten"]');
     await forgottenPasswordPage.verifyPageLoaded();
     
-    // Hacer clic en el botón Back
     await page.click('a[href*="account/login"]:has-text("Back")');
     await page.waitForLoadState('networkidle');
     
     expect(page.url()).toContain('account/login');
-    console.log('✅ Navegación de vuelta al login exitosa');
+    console.log('Navegación de vuelta al login exitosa');
   });
 });
