@@ -12,6 +12,6 @@ curl --location 'https://fakestoreapi.com/products' \
 }'
 ```
 
-![Respuesta de ejemplo](./respuesta_creacion.png)
+![Respuesta de ejemplo](./Captura%20de%20pantalla%202025-10-08%20a%20la(s)%209.02.18 a.m..png)
 
 
