@@ -4,7 +4,7 @@ const OpenCartRegisterPage = require('../pages/OpenCartRegisterPage');
 const OpenCartSuccessPage = require('../pages/OpenCartSuccessPage');
 const { userData, appConfig } = require('../fixtures/opencartTestData');
 
-test.describe('OpenCart - Flujo de Registro de Usuario', () => {
+test.describe('Flujo de Registro de Usuario', () => {
   let homePage;
   let registerPage;
   let successPage;

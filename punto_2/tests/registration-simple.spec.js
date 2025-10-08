@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const { userData } = require('../fixtures/opencartTestData');
 const { generateRandomEmail } = require('../utils/helpers');
 
-test.describe('OpenCart - Registro', () => {
+test.describe('Registro', () => {
   
   test('Registro exitoso de usuario - Versión simple', async ({ page }) => {
     await page.goto('https://opencart.abstracta.us/');

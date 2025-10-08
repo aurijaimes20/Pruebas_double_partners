@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const OpenCartHomePage = require('../pages/OpenCartHomePage');
 const OpenCartLoginPage = require('../pages/OpenCartLoginPage');
 
-test.describe('OpenCart - Pruebas de Login', () => {
+test.describe('Pruebas de Login', () => {
   let homePage;
   let loginPage;
 

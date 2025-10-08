@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test.describe('OpenCart - Validaciones de Formulario', () => {
+test.describe('Validaciones de Formulario', () => {
   
   test('Formulario vacío - Botón no debe navegar', async ({ page }) => {
     console.log('Probando formulario vacío...');

@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const OpenCartHomePage = require('../pages/OpenCartHomePage');
 
-test.describe('OpenCart - Pruebas de Carrito de Compras', () => {
+test.describe('Pruebas de Carrito de Compras', () => {
   let homePage;
 
   test.beforeEach(async ({ page }) => {
