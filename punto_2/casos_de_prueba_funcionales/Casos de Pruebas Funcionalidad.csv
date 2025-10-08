@@ -1,0 +1,69 @@
+Caso de prueba ,Estatus,Pre condicion ,Resumen,Paso a paso ,Resultado esperado ,version ,bud id ,observaciones 
+1,Pending,Usuario nuevo sin cuenta registrada	,Verificar flujo completo desde registro,"Dado que estoy en la página principal de OpenCart 
+Y que soy un usuario nuevo sin cuenta registrada 
+Cuando hago clic en ""My Account"" → ""Register"" 
+Y lleno todos los campos obligatorios del formulario 
+Y marco el checkbox de política de privacidad 
+Y hago clic en ""Continue"" ",Entonces la cuenta se crea correctamente,,,
+2,Pending,Usuario con cuenta existente que olvidó su contraseña,Verificar proceso de recuperación de contraseña ,"Dado que tengo una cuenta registrada en OpenCart 
+Y que olvidé mi contraseña 
+Cuando hago clic en ""My Account"" → ""Login"" 
+Y hago clic en ""Forgotten Password"" 
+Y ingreso mi email registrado 
+Y hago clic en ""Continue"" 
+Y recibo el email de recuperación 
+Y sigo las instrucciones para restablecer la contraseña 
+Y inicio sesión con la nueva contraseña ","Entonces el sistema envía el email de recuperación, permite restablecer la contraseña",,,
+3,Pending,Usuario en la página de registro,Verificar que los campos obligatorios muestren mensajes de error apropiados,"Dado que estoy en la página de registro 
+Y que el formulario está vacío 
+Cuando intento enviar el formulario sin llenar campos obligatorios 
+Y hago clic en ""Continue""",Entonces se muestran mensajes de error claros para cada campo obligatorio y el formulario no se envía,,,
+4,Pending,Usuario en formulario de registro o login,Verificar validación de formato de email,"Dado que estoy en un formulario que requiere email
+Y que tengo un email con formato inválido 
+Cuando ingreso un email con formato inválido (ej: ""usuario@"", ""usuario.com"", ""usuario@.com"") 
+Y hago clic en ""Continue""",Entonces se muestra mensaje de error específico sobre formato de email inválido,,,
+5,Pending,Usuario en formulario de registro,Verificar validación de contraseñas,"Dado que estoy en el formulario de registro 
+Y que tengo contraseñas inválidas 
+Cuando ingreso contraseñas que no coinciden O ingreso una contraseña muy corta (menos de 4 caracteres)
+ Y hago clic en ""Continue""",Entonces se muestran mensajes de error específicos sobre problemas con las contraseñas,,,
+6,Pending,Usuario en cualquier página del sitio,Verificar que la navegación funcione correctamente,"Dado que estoy navegando por el sitio OpenCart
+Y que tengo acceso a los enlaces de navegación 
+Cuando hago clic en enlaces de navegación (Home, Desktops, Laptops, etc.) 
+Y uso la flecha de atras para regresar 
+Y hago clic en el logo para ir al inicio ",Entonces todos los enlaces de navegación funcionan correctamente y llevan a las páginas esperadas,,,
+7,Pending,Usuario en la página principal,Verificar funcionalidad de búsqueda de productos,"Dado que estoy en la página principal 
+Y que tengo un término de búsqueda 
+Cuando ingreso un término de búsqueda en el campo de búsqueda 
+Y presiono Enter o hago clic en el botón de búsqueda ",Entonces la búsqueda devuelve resultados relevantes y permite acceder a los productos,,,
+8,Pending,Usuario navegando por productos,Verificar agregar múltiples productos al carrito,"Dado que estoy navegando por diferentes categorías de productos 
+Y que tengo acceso a múltiples productos 
+Cuando agrego un producto al carrito 
+Y continúo navegando y agrego otro producto diferente 
+Y hago clic en el ícono del carrito",Entonces el carrito muestra todos los productos agregados y calcula el total correctamente,,,
+9,Pending,Usuario con productos en el carrito,Verificar modificación de cantidades,"Dado que tengo productos en mi carrito 
+Y que puedo acceder a los controles de cantidad 
+Cuando modifico la cantidad de un producto usando los controles + y - 
+Y hago clic en ""Update"" ",Entonces las cantidades se actualizan y el total se recalcula correctamente,,,
+10,Pending,Usuario con múltiples productos en el carrito,Verificar eliminación de productos del carrito,"Dado que tengo múltiples productos en mi carrito
+Y que puedo acceder a los botones de eliminación 
+Cuando hago clic en el botón ""Remove"" (×) de un producto específico 
+Y confirmo la eliminación ","Entonces solo el producto seleccionado se elimina, los demás permanecen, y el total se actualiza",,,
+11,Pending,Usuario compra producto,Verificar confirmacion de la compra,"Dado que tengo múltiples productos en mi carrito
+Y hago click en el boton de checkout
+Y agrego toda la informacion en el primer paso Checkout Options
+Ydoy click en en continuar en el paso 2
+Y agrego comentarios en el paso 3 de Payment Method
+Y acepto los terminos y condiciones
+Y doy click en el boton de coninuar
+Y valido la info del paso 4
+Y Doy click en el boton de confirmar orden","Entonces la orden debe ser creada con exito y mostrar el mensaje de Your order has been placed!
+",,,
+12,Pending,Usuario logueado con sesión que puede expirar,Verificar comportamiento cuando la sesión expira durante checkout,"Dado que estoy logueado y en proceso de checkout 
+Y que mi sesión puede expirar 
+Cuando mi sesión expira (simulado esperando tiempo o cerrando sesión en otra pestaña) 
+Y intento continuar con el checkout
+Y el sistema me redirige al login ","Entonces después de loguearme, puedo continuar donde me quedé",,,
+13,Pending,Usuario con producto en carrito que se agota,Verificar manejo de productos agotados,"Dado que tengo un producto en mi carrito 
+Y que el producto puede agotarse 
+Cuando el producto se agota mientras estoy en checkout 
+Y intento confirmar la orden ",Entonces el sistema notifica sobre productos no disponibles y permite ajustar el carrito,,,
