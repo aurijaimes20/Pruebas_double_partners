@@ -197,6 +197,9 @@ const appConfig = {
     privacyPolicyRequired: 'Warning: You must agree to the Privacy Policy!',
     emailAlreadyExists: 'Warning: E-Mail Address is already registered!',
     passwordMismatch: 'Password confirmation does not match password!',
+    loginSuccess: 'My Account',
+    passwordResetSuccess: 'An email with a confirmation link has been sent your email address.',
+    loginError: 'Warning: No match for E-Mail Address and/or Password.',
     invalidEmail: 'E-Mail Address does not appear to be valid!',
     firstNameRequired: 'First Name must be between 1 and 32 characters!',
     lastNameRequired: 'Last Name must be between 1 and 32 characters!',
@@ -359,11 +362,36 @@ const testScenarios = {
   ]
 };
 
+// Datos de login
+const loginTestData = {
+  validCredentials: {
+    email: 'juan.perez.test@example.com',
+    password: 'TestPassword123!',
+  },
+  invalidCredentials: {
+    email: 'invalid@example.com',
+    password: 'WrongPassword123!',
+  },
+  emptyCredentials: {
+    email: '',
+    password: '',
+  },
+  invalidEmail: {
+    email: 'invalid-email',
+    password: 'TestPassword123!',
+  },
+  invalidPassword: {
+    email: 'juan.perez.test@example.com',
+    password: 'wrongpassword',
+  },
+};
+
 module.exports = {
   userData,
   productData,
   appConfig,
   navigationData,
   validationData,
-  testScenarios
+  testScenarios,
+  loginTestData
 };

@@ -92,8 +92,14 @@ class OpenCartHomePage extends BasePage {
    * Navegar a la página de login
    */
   async navigateToLogin() {
-    await this.clickMyAccountDropdown();
-    await this.clickElement(this.selectors.loginLink);
+    // Hacer clic en My Account para abrir el dropdown
+    await this.page.click('a[title="My Account"]');
+    
+    // Esperar a que aparezca el menú dropdown
+    await this.page.waitForSelector('a[href*="account/login"]', { timeout: 5000 });
+    
+    // Hacer clic en Login
+    await this.page.click('a[href*="account/login"]');
   }
 
   /**
