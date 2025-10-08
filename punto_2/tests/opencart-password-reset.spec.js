@@ -3,7 +3,7 @@ const OpenCartHomePage = require('../pages/OpenCartHomePage');
 const OpenCartLoginPage = require('../pages/OpenCartLoginPage');
 const OpenCartForgottenPasswordPage = require('../pages/OpenCartForgottenPasswordPage');
 
-test.describe('OpenCart - Pruebas de Restablecimiento de Contraseña Simplificadas', () => {
+test.describe('OpenCart - Pruebas de Restablecimiento de Contraseña', () => {
   let homePage;
   let loginPage;
   let forgottenPasswordPage;
