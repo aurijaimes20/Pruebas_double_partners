@@ -1,9 +1,9 @@
-# 📄 Informe - API FakeStore
+#Informe - API FakeStore
 
-## 📋 Descripción
+##Descripción
 Esta carpeta contiene los informes generados a partir de las pruebas realizadas a la API FakeStore.
 
-## 🗂️ Archivos
+##Archivos
 
 ### `Informe_pruebas_carga_y_estres.pdf`
 Informe completo en formato PDF que incluye:
@@ -13,7 +13,7 @@ Informe completo en formato PDF que incluye:
 - Comportamiento del API bajo diferentes cargas
 - Conclusiones y recomendaciones
 
-## 📊 Contenido del Informe
+##Contenido del Informe
 
 ### Secciones Principales:
 1. **Tiempos de Respuesta Promedio**
@@ -31,28 +31,28 @@ Informe completo en formato PDF que incluye:
    - Recomendaciones para producción
    - Límites de usuarios concurrentes
 
-## 🎯 Resultados Clave
+##Resultados Clave
 
 ### Prueba 1: Carga Constante (150 usuarios)
-- ✅ **Estado:** EXCELENTE
-- ⏱️ **Tiempo promedio:** 0.21-0.22 segundos
-- 🎯 **Tasa de errores:** 0.00%
+- **Estado:** EXCELENTE
+- **Tiempo promedio:** 0.21-0.22 segundos
+- **Tasa de errores:** 0.00%
 
 ### Prueba 2: Rampa (100-1000 usuarios)
-- ❌ **Estado:** CRÍTICO
-- ⏱️ **Tiempo promedio:** 1.45 segundos
-- 🎯 **Tasa de errores:** 0.29%
+- **Estado:** CRÍTICO
+- **Tiempo promedio:** 1.45 segundos
+- **Tasa de errores:** 0.29%
 
-## 📈 Recomendaciones
+## Recomendaciones
 - **Capacidad óptima:** 150 usuarios concurrentes
 - **Capacidad máxima:** 400-500 usuarios concurrentes
 - **Límite recomendado para producción:** 300-400 usuarios
 
-## 📝 Metodología
+## Metodología
 - **Herramienta:** K6 ejecutado desde terminal
 - **Datos:** Resultados reales de pruebas de carga
 - **Análisis:** Métricas de rendimiento y comportamiento
 - **Formato:** Informe ejecutivo con datos técnicos
 
-## 🎯 Objetivo
+## Objetivo
 Proporcionar un análisis completo del rendimiento de la API FakeStore para tomar decisiones informadas sobre su uso en producción.

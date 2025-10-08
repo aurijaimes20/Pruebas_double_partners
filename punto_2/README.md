@@ -1,18 +1,18 @@
-# 🎭 Pruebas Automatizadas con Playwright
+#Pruebas Automatizadas con Playwright
 ## Page Object Model - OpenCart Automation
 
 Este proyecto contiene el framework de automatización de pruebas web para **OpenCart** (https://opencart.abstracta.us) usando Playwright con el patrón Page Object Model (POM) en JavaScript.
 
-## 🎯 Objetivo
+##Objetivo
 
 Automatizar los flujos de prueba más críticos de la tienda OpenCart para reducir el tiempo de ejecución y mejorar la cobertura de pruebas, incluyendo:
-- ✅ **Flujo de registro de usuario** (completado)
-- 🔄 Flujo de login
-- 🔄 Navegación de productos
-- 🔄 Proceso de compra
-- 🔄 Gestión de cuenta
+- **Flujo de registro de usuario** (completado)
+- Flujo de login
+- Navegación de productos
+- Proceso de compra
+- Gestión de cuenta
 
-## 📋 Descripción
+##Descripción
 
 Este setup proporciona una base sólida para desarrollar pruebas automatizadas de UI/UX usando:
 - **Playwright** como framework de pruebas
@@ -20,7 +20,7 @@ Este setup proporciona una base sólida para desarrollar pruebas automatizadas d
 - **Page Object Model** como patrón de diseño
 - **Estructura modular** para fácil mantenimiento
 
-## 🗂️ Estructura del Proyecto
+##Estructura del Proyecto
 
 ```
 punto_2/
@@ -47,7 +47,7 @@ punto_2/
 └── README.md                      # Este archivo
 ```
 
-## 🚀 Instalación y Configuración
+##Instalación y Configuración
 
 ### 1. Instalar Dependencias
 ```bash
@@ -66,7 +66,7 @@ cp env.example .env
 # BASE_URL=https://opencart.abstracta.us
 ```
 
-## 🎯 Uso
+##Uso
 
 ### Scripts Disponibles
 
@@ -108,7 +108,7 @@ npx playwright test --grep "Registro exitoso de usuario"
 npx playwright test --workers=4
 ```
 
-## 🏗️ Page Object Model
+##Page Object Model
 
 ### Estructura de Clases
 
@@ -166,7 +166,7 @@ test('Registro exitoso de usuario', async ({ page }) => {
 });
 ```
 
-## 🛠️ Utilidades
+##Utilidades
 
 ### helpers.js
 Funciones auxiliares para:
@@ -191,7 +191,7 @@ Datos de prueba específicos para OpenCart:
 - **validationData**: Patrones y límites de validación
 - **testScenarios**: Escenarios de prueba predefinidos
 
-## 📊 Configuración de Reportes
+##Configuración de Reportes
 
 El proyecto está configurado para generar:
 - **Reporte HTML** - Interfaz visual de resultados
@@ -201,7 +201,7 @@ El proyecto está configurado para generar:
 - **Videos** - Grabaciones de pruebas fallidas
 - **Traces** - Información detallada de ejecución
 
-## 🌐 Navegadores Soportados
+##Navegadores Soportados
 
 - **Chromium** (Chrome/Edge)
 - **Firefox**
@@ -209,7 +209,7 @@ El proyecto está configurado para generar:
 - **Mobile Chrome** (Android)
 - **Mobile Safari** (iOS)
 
-## ⚙️ Configuración Avanzada
+##Configuración Avanzada
 
 ### Variables de Entorno
 ```bash
@@ -225,7 +225,7 @@ Editar `playwright.config.js` para:
 - Ajustar reportes
 - Modificar paralelización
 
-## 🔧 Mejores Prácticas
+##Mejores Prácticas
 
 ### 1. Nomenclatura
 - Usar nombres descriptivos para métodos y variables
@@ -252,7 +252,7 @@ Editar `playwright.config.js` para:
 - Refactorizar código duplicado
 - Documentar cambios importantes
 
-## 🐛 Debugging
+##Debugging
 
 ### Modo Debug
 ```bash
@@ -268,17 +268,17 @@ Habilitados para análisis detallado de fallos
 ### Logs de Consola
 Capturados automáticamente durante las pruebas
 
-## 📝 Próximos Pasos
+##Próximos Pasos
 
-1. ✅ **Flujo de registro de usuario** - Completado
-2. 🔄 **Flujo de login** - En desarrollo
-3. 🔄 **Navegación de productos** - Pendiente
-4. 🔄 **Proceso de compra** - Pendiente
-5. 🔄 **Gestión de cuenta** - Pendiente
-6. 🔄 **Configurar CI/CD** para ejecución automática
-7. 🔄 **Integrar** con herramientas de reporte
+1. **Flujo de registro de usuario** - Completado
+2. **Flujo de login** - En desarrollo
+3. **Navegación de productos** - Pendiente
+4. **Proceso de compra** - Pendiente
+5. **Gestión de cuenta** - Pendiente
+6. **Configurar CI/CD** para ejecución automática
+7. **Integrar** con herramientas de reporte
 
-## 🤝 Contribución
+##Contribución
 
 Para contribuir al proyecto:
 1. Seguir las convenciones establecidas
@@ -286,7 +286,7 @@ Para contribuir al proyecto:
 3. Agregar pruebas para nuevas funcionalidades
 4. Mantener la estructura del Page Object Model
 
-## 📚 Recursos Adicionales
+##Recursos Adicionales
 
 - [Documentación de Playwright](https://playwright.dev/)
 - [Page Object Model Pattern](https://playwright.dev/docs/pom)

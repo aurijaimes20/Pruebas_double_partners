@@ -1,9 +1,9 @@
-# 📮 Postman - API FakeStore
+#Postman - API FakeStore
 
-## 📋 Descripción
+##Descripción
 Esta carpeta contiene la documentación y evidencias de las pruebas manuales realizadas con Postman para los endpoints de la API FakeStore.
 
-## 🗂️ Estructura de Carpetas
+##Estructura de Carpetas
 
 ### `/producto_especifico/`
 Pruebas para consultar un producto específico por ID:
@@ -25,7 +25,7 @@ Pruebas para consultar productos por categoría:
 - **`consulta_categoria_electronics.md`** - Documentación del endpoint GET /products/category/{category}
 - **`respuesta_electronics.png`** - Captura de pantalla de la respuesta
 
-## 🎯 Endpoints Documentados
+##Endpoints Documentados
 
 ### 1. **GET /products/{id}**
 - **URL:** `https://fakestoreapi.com/products/9`
@@ -53,7 +53,7 @@ Pruebas para consultar productos por categoría:
 - **Descripción:** Consulta productos por categoría específica
 - **Ejemplo:** Consulta de productos de la categoría "electronics"
 
-## 📊 Datos de Prueba Utilizados
+##Datos de Prueba Utilizados
 
 ### Producto de Ejemplo:
 ```json
@@ -66,18 +66,18 @@ Pruebas para consultar productos por categoría:
 }
 ```
 
-## 🔧 Cómo Usar
+##Cómo Usar
 1. Abrir Postman
 2. Importar las colecciones o crear las peticiones manualmente
 3. Seguir la documentación en cada archivo .md
 4. Verificar las respuestas con las capturas de pantalla
 
-## 📝 Metodología
+##Metodología
 - **Herramienta:** Postman
 - **Tipo:** Pruebas manuales
 - **Cobertura:** 4 endpoints principales
 - **Evidencias:** Capturas de pantalla de respuestas
 - **Documentación:** Archivos markdown con instrucciones
 
-## 🎯 Objetivo
+##Objetivo
 Proporcionar documentación completa y evidencias de las pruebas manuales realizadas a la API FakeStore para validar su funcionamiento correcto.
