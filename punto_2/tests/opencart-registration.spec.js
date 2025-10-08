@@ -4,17 +4,12 @@ const OpenCartRegisterPage = require('../pages/OpenCartRegisterPage');
 const OpenCartSuccessPage = require('../pages/OpenCartSuccessPage');
 const { userData, appConfig } = require('../fixtures/opencartTestData');
 
-/**
- * Pruebas de automatización para el flujo de registro de OpenCart
- * Estas pruebas replican el flujo manual que se ejecutó anteriormente
- */
 test.describe('OpenCart - Flujo de Registro de Usuario', () => {
   let homePage;
   let registerPage;
   let successPage;
 
   test.beforeEach(async ({ page }) => {
-    // Inicializar las páginas
     homePage = new OpenCartHomePage(page);
     registerPage = new OpenCartRegisterPage(page);
     successPage = new OpenCartSuccessPage(page);
@@ -90,7 +85,6 @@ test.describe('OpenCart - Flujo de Registro de Usuario', () => {
     });
 
     await test.step('Verificar que todos los elementos estén presentes', async () => {
-      // Verificar campos del formulario
       const firstNameVisible = await registerPage.isElementVisible(registerPage.selectors.firstNameInput);
       expect(firstNameVisible).toBe(true);
       
@@ -109,11 +103,9 @@ test.describe('OpenCart - Flujo de Registro de Usuario', () => {
       const confirmPasswordVisible = await registerPage.isElementVisible(registerPage.selectors.confirmPasswordInput);
       expect(confirmPasswordVisible).toBe(true);
       
-      // Verificar botón Continue
       const continueButtonVisible = await registerPage.isElementVisible(registerPage.selectors.continueButton);
       expect(continueButtonVisible).toBe(true);
       
-      // Verificar checkbox de política de privacidad
       const privacyPolicyVisible = await registerPage.isElementVisible(registerPage.selectors.privacyPolicyCheckbox);
       expect(privacyPolicyVisible).toBe(true);
     });
