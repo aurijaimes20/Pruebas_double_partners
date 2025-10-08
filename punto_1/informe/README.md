@@ -5,7 +5,7 @@ Esta carpeta contiene los informes generados a partir de las pruebas realizadas 
 
 ## 🗂️ Archivos
 
-### `Documento sin título.pdf`
+### `Informe_pruebas_carga_y_estres.pdf`
 Informe completo en formato PDF que incluye:
 - Análisis de rendimiento de la API
 - Resultados de pruebas de carga y estrés
